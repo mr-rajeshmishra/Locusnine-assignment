@@ -1,0 +1,33 @@
+.logo{
+    width: 110px;
+    margin-left: 3%;
+}
+
+.menu-button{
+    background: transparent;
+    border: transparent;
+    margin-left: 3%;
+    cursor: pointer;
+}
+
+.user-name-section{
+    float: right;
+    width: 15%;
+    margin-right: 3%;
+}
+
+.notification{
+    width: 20px;
+    margin-left: 5%;
+}
+
+.user{
+    width: 20px;
+    margin-left: 7%;
+}
+
+.down-arrow{
+    width: 15px;
+    float: right;
+    margin-top: 10px;
+}

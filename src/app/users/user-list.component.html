@@ -1,0 +1,57 @@
+<div class="height-25px"></div>
+<div class="card">
+  <div class="card-body">
+    <div class="user-list-card">
+      <img src="../../assets/icons/ico_users.svg" class="mr-2 title">Users
+      <div class="search-div">
+        <div class="search-container">
+          <input type="text" placeholder="Search" name="search">
+          <button><img src="../../assets/icons/ico_search.svg"></button>
+        </div>
+        <button class="add-user-button" (click)="addUser()">
+          <div class="padding-2px"><img src="../../assets/icons/ico_add.svg" class="mr-2"><span class="color-white">Add User</span></div>
+        </button>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="padding-left-30 width-25" scope="col" sortable="Name" (sort)="onSort($event)">NAME</th>
+          <th class="width-25" scope="col" sortable="Email" (sort)="onSort($event)">EMAIL</th>
+          <th class="width-20" scope="col" sortable="RoleType" (sort)="onSort($event)">ROLE TYPE</th>
+          <th class="width-20" scope="col" sortable="Status" (sort)="onSort($event)">STATUS</th>
+          <th class="width-10" scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td class="padding-left-30 width-25">{{ user.Name }}</td>
+          <td class="width-25">{{ user.Email }}</td>
+          <td class="width-20">{{ user.RoleType == 1 ? 'Admin' : 'Customer Executive' }}</td>
+          <td class="width-20"><img [src]="'../../assets/icons/ico_' + user.Status.toLowerCase() + '.svg'" class="mr-2 width-10px">
+            {{ user.Status }}</td>
+          <td class="width-10">
+            <img src="../../assets/icons/ico_edit.svg" class="mr-2 edit-button"
+              (click)="editUser(user)" title="Edit User">
+            <img src="../../assets/icons/ico_delete.svg" class="mr-2 edit-button" 
+              (click)="deleteUser(user.Id)" title="Delete User">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id="addUserModal" class="modal fade modal-popup" tabindex="-1" role="dialog" data-backdrop="static">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close-button" type="button"
+          data-dismiss="modal"><img src="../../assets/icons/ico_close.svg" class="mr-2 width-15px"></button>
+      </div>
+      <div class="modal-body modal-tall padding-0px">
+        <app-add-user *ngIf="showAddUserData" [selectedUser]="selectedUser"></app-add-user>
+      </div>
+    </div>
+  </div>
+</div>
